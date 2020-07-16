@@ -20,11 +20,6 @@ public class ExtraFields : MonoBehaviour
     public bool goal;
 }
 
-public class ClueField : MonoBehaviour
-{
-    public string clueString;
-}
-
 public class Assign : MonoBehaviour {
     public List<MirrorProperties> CartesianProduct(string[] colors, string[] shapes, string[] areas) {
         var configs = new List<MirrorProperties>();
@@ -89,8 +84,8 @@ public class Assign : MonoBehaviour {
         for(int i = 0; i < cluepoints.Count; i++) {
             GameObject newClue = Instantiate(clue);
             newClue.transform.position = cluepoints[0].transform.position;
-            ClueField compField  = newClue.AddComponent(typeof(ClueField)) as ClueField;
-            compField.clueString = mp[0];
+            TMPro.TextMeshPro text = newClue.transform.Find("TEXT").GetComponent<TMPro.TextMeshPro>();
+            text.text = mp[i];
         }
     }
 
