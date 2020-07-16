@@ -14,27 +14,25 @@ public class MirrorProperties {
     }
 }
 
-public class ExtraFields : MonoBehaviour
-{
+public class ExtraFields : MonoBehaviour {
     public string area;
     public bool goal;
 }
 
-public class ClueField : MonoBehaviour
-{
+public class ClueField : MonoBehaviour {
     public string clueString;
 }
 
 public class Assign : MonoBehaviour {
     public List<MirrorProperties> CartesianProduct(string[] colors, string[] shapes, string[] areas) {
-        var configs = new List<MirrorProperties>();
+        List<MirrorProperties> configs = new List<MirrorProperties>();
         var cartesianProduct = 
             from color in colors
             from shape in shapes
             from area in areas
             select new {color, shape, area};
         foreach(var pair in cartesianProduct) { 
-            var tuple = new MirrorProperties(pair.color, pair.shape, pair.area);
+            MirrorProperties tuple = new MirrorProperties(pair.color, pair.shape, pair.area);
             configs.Add(tuple);
         } 
         return configs;
@@ -53,7 +51,7 @@ public class Assign : MonoBehaviour {
 
     public void ChangeColor(GameObject mirror, string colorString) {
         GameObject mirrorFrame = mirror.transform.GetChild(0).gameObject;
-        var materials = mirrorFrame.GetComponent<MeshRenderer>().materials;
+        Material[] materials = mirrorFrame.GetComponent<MeshRenderer>().materials;
         Material mat = materials[0];
         Color color;
         if (string.Equals(colorString, "red")) {
@@ -78,22 +76,6 @@ public class Assign : MonoBehaviour {
         return newMirror;
     }
 
-    public void AssignClues(MirrorProperties goalSpec, List<GameObject> cluePool1, List<GameObject> cluePool2, List<GameObject> cluePool3, GameObject clue) {
-        Random random = new Random();
-        GameObject randomCluePoint1 = cluePool1[Random.Range(0,cluePool1.Count)];
-        GameObject randomCluePoint2 = cluePool2[Random.Range(0,cluePool2.Count)];
-        GameObject randomCluePoint3 = cluePool3[Random.Range(0,cluePool3.Count)];
-        List<GameObject> cluepoints = new List<GameObject>{randomCluePoint1, randomCluePoint2, randomCluePoint3};
-        List<string> mp = new List<string>{goalSpec.color, goalSpec.shape, goalSpec.area};
-        Shuffle(cluepoints);
-        for(int i = 0; i < cluepoints.Count; i++) {
-            GameObject newClue = Instantiate(clue);
-            newClue.transform.position = cluepoints[0].transform.position;
-            ClueField compField  = newClue.AddComponent(typeof(ClueField)) as ClueField;
-            compField.clueString = mp[0];
-        }
-    }
-
     public void AssignMirrors(int goalMirror, List<GameObject> positions, GameObject circle, GameObject square, GameObject diamond, List<MirrorProperties> props) {
         for(int i = 0; i < positions.Count; i++) { 
             string color = props[i].color;
@@ -112,6 +94,23 @@ public class Assign : MonoBehaviour {
         } 
     }
 
+    public void AssignClues(MirrorProperties goalSpec, List<GameObject> cluePool1, List<GameObject> cluePool2, List<GameObject> cluePool3, GameObject clue) {
+        Random random = new Random();
+
+        GameObject randomCluePoint1 = cluePool1[Random.Range(0,cluePool1.Count)];
+        GameObject randomCluePoint2 = cluePool2[Random.Range(0,cluePool2.Count)];
+        GameObject randomCluePoint3 = cluePool3[Random.Range(0,cluePool3.Count)];
+        List<GameObject> cluepoints = new List<GameObject>{randomCluePoint1, randomCluePoint2, randomCluePoint3};
+        List<string> mp = new List<string>{goalSpec.color, goalSpec.shape, goalSpec.area};
+        Shuffle(cluepoints);
+        Debug.Log(cluepoints.Count);
+        for(int i = 0; i < cluepoints.Count; i++) {
+            GameObject newClue = Instantiate(clue);
+            newClue.transform.position = cluepoints[i].transform.position;
+            ClueField compField  = newClue.AddComponent(typeof(ClueField)) as ClueField;
+            compField.clueString = mp[i];
+        }
+    }
     public GameObject circleMirror;
     public GameObject squareMirror;
     public GameObject diamondMirror;
@@ -135,7 +134,7 @@ public class Assign : MonoBehaviour {
         }
         Shuffle(CP);
         int goalMirror = Random.Range(0,mpCount);
-        var goalSpec = CP[goalMirror];
+        MirrorProperties goalSpec = CP[goalMirror];
         AssignMirrors(goalMirror, mirrorPositions, circleMirror, squareMirror, diamondMirror, CP);
         AssignClues(goalSpec, cluePool1, cluePool2, cluePool3, clue);
     }
