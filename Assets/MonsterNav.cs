@@ -24,11 +24,12 @@ public class MonsterNav : MonoBehaviour
     private void Start()
     {
         agentProperties = GetComponent<NavMeshAgent>();
-        this.transform.position = new Vector3(this.transform.position.x, minHeight, this.transform.position.z);
-        Sequence s = DOTween.Sequence();
-        s.Append(this.transform.DOMoveY(maxHeight, duration));
-        s.Append(this.transform.DOMoveY(minHeight, duration));
-        s.SetLoops(-1, LoopType.Restart);
+        // this.transform.position = new Vector3(this.transform.position.x, minHeight, this.transform.position.z);
+        this.transform.DOMoveX(this.transform.position.x +5, 5);
+        // Sequence s = DOTween.Sequence();
+        // s.Append(this.transform.DOMoveY(340.06, 2));
+        // s.Append(this.transform.DOMoveY(minHeight, duration));
+        // s.SetLoops(-1, LoopType.Restart);
     }
 
     public void SwitchState(MonsterState newState)
