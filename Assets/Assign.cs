@@ -6,30 +6,28 @@ using UnityEngine;
 public class MirrorProperties {
     public string color;
     public string shape;
-    public string area;
+    public string number;
     public MirrorProperties(string a, string b, string c) {
         color = a;
         shape = b;
-        area = c;
+        number = c;
     }
 }
 
-public class ExtraFields : MonoBehaviour
-{
-    public string area;
+public class ExtraFields : MonoBehaviour {
     public bool goal;
 }
 
 public class Assign : MonoBehaviour {
-    public List<MirrorProperties> CartesianProduct(string[] colors, string[] shapes, string[] areas) {
+    public List<MirrorProperties> CartesianProduct(string[] colors, string[] shapes, string[] numbers) {
         var configs = new List<MirrorProperties>();
         var cartesianProduct = 
             from color in colors
             from shape in shapes
-            from area in areas
-            select new {color, shape, area};
+            from number in numbers
+            select new {color, shape, number};
         foreach(var pair in cartesianProduct) { 
-            var tuple = new MirrorProperties(pair.color, pair.shape, pair.area);
+            var tuple = new MirrorProperties(pair.color, pair.shape, pair.number);
             configs.Add(tuple);
         } 
         return configs;
@@ -79,7 +77,7 @@ public class Assign : MonoBehaviour {
         GameObject randomCluePoint2 = cluePool2[Random.Range(0,cluePool2.Count)];
         GameObject randomCluePoint3 = cluePool3[Random.Range(0,cluePool3.Count)];
         List<GameObject> cluepoints = new List<GameObject>{randomCluePoint1, randomCluePoint2, randomCluePoint3};
-        List<string> mp = new List<string>{goalSpec.color, goalSpec.shape, goalSpec.area};
+        List<string> mp = new List<string>{goalSpec.color, goalSpec.shape, goalSpec.number};
         Shuffle(cluepoints);
         for(int i = 0; i < cluepoints.Count; i++) {
             GameObject newClue = Instantiate(clue);
@@ -93,13 +91,15 @@ public class Assign : MonoBehaviour {
         for(int i = 0; i < positions.Count; i++) { 
             string color = props[i].color;
             string shape = props[i].shape;
-            string area = props[i].area;
+            string number = props[i].number;
             var position = positions[i].transform.position;
             GameObject newMirror = CreateMirror(circleMirror, square, diamond, shape);
             ChangeColor(newMirror, color);
             newMirror.transform.position = position;
+            GameObject textComp = newMirror.transform.GetChild(4).gameObject;
+            TMPro.TextMeshPro textMesh = textComp.GetComponent<TMPro.TextMeshPro>();
+            textMesh.text = number;
             ExtraFields compExtra = newMirror.AddComponent(typeof(ExtraFields)) as ExtraFields;
-            compExtra.area = area;
             compExtra.goal = false;
             if (i ==  goalMirror) {
                 compExtra.goal = true;
@@ -115,14 +115,13 @@ public class Assign : MonoBehaviour {
     public List<GameObject> cluePool1;
     public List<GameObject> cluePool2;
     public List<GameObject> cluePool3;
-    // public GameObject specialRoom;
 
     string[] colors = {"red","blue","green"};
     string[] shapes = {"square","diamond","circle"};
-    string[] areas = {"1","2","3"};
+    string[] numbers = {"1","2","3"};
 
     void Start() { 
-        var CP = CartesianProduct(colors, shapes, areas);
+        var CP = CartesianProduct(colors, shapes, numbers);
         int mpCount = mirrorPositions.Count;
         if (mpCount > CP.Count) {
             Debug.Log("Number of mirrors is larger than the number of available combinations.");
