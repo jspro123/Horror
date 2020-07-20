@@ -81,6 +81,7 @@ public class Assign : MonoBehaviour {
         Shuffle(cluepoints);
         for(int i = 0; i < cluepoints.Count; i++) {
             GameObject newClue = Instantiate(clue);
+            newClue.transform.SetParent(clueParent.transform);
             newClue.transform.position = cluepoints[0].transform.position;
             TMPro.TextMeshPro text = newClue.transform.Find("TEXT").GetComponent<TMPro.TextMeshPro>();
             text.text = mp[i];
@@ -94,6 +95,7 @@ public class Assign : MonoBehaviour {
             string number = props[i].number;
             var position = positions[i].transform.position;
             GameObject newMirror = CreateMirror(circleMirror, square, diamond, shape);
+            newMirror.transform.SetParent(mirrorParent.transform);
             ChangeColor(newMirror, color);
             newMirror.transform.position = position;
             GameObject textComp = newMirror.transform.GetChild(4).gameObject;
@@ -107,11 +109,18 @@ public class Assign : MonoBehaviour {
         } 
     }
 
+    [Header("Important Prefabs")]
     public GameObject circleMirror;
     public GameObject squareMirror;
     public GameObject diamondMirror;
-    public List<GameObject> mirrorPositions;
     public GameObject clue;
+    
+    [Header("Parents of Instantiated Objects")]
+    public GameObject mirrorParent;
+    public GameObject clueParent; 
+
+    [Header("Position of mirrors/clues")]
+    public List<GameObject> mirrorPositions;
     public List<GameObject> cluePool1;
     public List<GameObject> cluePool2;
     public List<GameObject> cluePool3;

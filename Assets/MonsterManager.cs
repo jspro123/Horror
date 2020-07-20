@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 using DG.Tweening;
 
-public class MonsterNav : MonoBehaviour
+public class MonsterManager : MonoBehaviour
 {
 
     public Camera myCam;
@@ -54,19 +54,6 @@ public class MonsterNav : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if(Physics.Raycast(ray, out hit))
-            {
-                agentProperties.SetDestination(hit.point);
-            }
-        }
-        */
-
         agentProperties.SetDestination(myCam.transform.position);
     }
 }
