@@ -270,26 +270,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46f839455d564a078acea4b820f3ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleMirror: {fileID: 7980730294440936501, guid: b7565f1de9d0147b58ed13c893b064ba,
+  circleMirror: {fileID: 5391717906548224497, guid: b7565f1de9d0147b58ed13c893b064ba,
     type: 3}
-  squareMirror: {fileID: 4259952261701051123, guid: d86b5b6e5d1794b9c9a63f9627584e83,
+  squareMirror: {fileID: 4769691663496598335, guid: d86b5b6e5d1794b9c9a63f9627584e83,
     type: 3}
-  diamondMirror: {fileID: 188839250823158997, guid: 026da981d1b2c4c1493d0b7cee8ccf6d,
+  diamondMirror: {fileID: 246008825300518396, guid: 026da981d1b2c4c1493d0b7cee8ccf6d,
     type: 3}
   mirrorPositions:
-  - {fileID: 1335171169}
-  - {fileID: 578362958}
-  - {fileID: 378889957}
   - {fileID: 1860627066}
   - {fileID: 342081707}
   - {fileID: 1283366642}
-  clue: {fileID: 1685343955664076, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-  cluePool1:
   - {fileID: 322461076}
-  cluePool2:
   - {fileID: 923287018}
-  cluePool3:
   - {fileID: 1218486218}
+  clue: {fileID: 1685343955664076, guid: 7365d99fd6975470c9dbcfb62d324ddb, type: 3}
+  cluePool1:
+  - {fileID: 1335171169}
+  cluePool2:
+  - {fileID: 578362958}
+  cluePool3:
+  - {fileID: 378889957}
 --- !u!4 &706636035
 Transform:
   m_ObjectHideFlags: 0
@@ -716,10 +716,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061294981}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.13, y: 0.98, z: -7.16}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: -5.68, y: 43.44, z: -53.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
