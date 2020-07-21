@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MirrorObject: {fileID: 246008826232543321}
   VRMode: 0
+  mirrorMaterialCopy: {fileID: 2100000, guid: 232c0653700ee46418c8a4a6f0402d92, type: 2}
 --- !u!1 &246008826847846397
 GameObject:
   m_ObjectHideFlags: 0
