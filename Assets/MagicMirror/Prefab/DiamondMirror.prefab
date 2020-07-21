@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 246008825300518145}
   - component: {fileID: 246008825300518398}
   - component: {fileID: 246008825300518399}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DiamondMirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   FarClipPlane: 1000
   ReflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1847
   AddFlareLayer: 0
   NormalIsForward: 1
   AspectRatio: 1.5
@@ -72,8 +72,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3143109, y: 1, z: 0.5284145}
+  m_Center: {x: -0.023799011, y: 0, z: 0.0054197824}
 --- !u!114 &246008825300518399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 246008825566780486}
   - component: {fileID: 246008825566780491}
   - component: {fileID: 246008825566780488}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 246008826232543325}
   - component: {fileID: 246008826232543322}
   - component: {fileID: 246008826232543323}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MirrorReflection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 246008826501118334}
   - component: {fileID: 246008826501118335}
   - component: {fileID: 246008826501118332}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MirrorCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MirrorObject: {fileID: 246008826232543321}
   VRMode: 0
+  mirrorMaterialCopy: {fileID: 2100000, guid: 232c0653700ee46418c8a4a6f0402d92, type: 2}
 --- !u!1 &246008826847846397
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +387,7 @@ GameObject:
   - component: {fileID: 246008826847846145}
   - component: {fileID: 246008826847846398}
   - component: {fileID: 246008826847846399}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MirrorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2633340621821471169}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +513,7 @@ GameObject:
   - component: {fileID: 6467809179286717634}
   - component: {fileID: 4034720381222129057}
   - component: {fileID: 1837119969858016856}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

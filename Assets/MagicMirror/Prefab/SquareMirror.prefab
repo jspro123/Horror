@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5531251981995469913}
   - component: {fileID: 8501829125519242911}
   - component: {fileID: 6638176350724146374}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8837467809830309771}
   - component: {fileID: 3271317174784269891}
   - component: {fileID: 4300385136346285910}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MirrorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 3369168591442740196}
   - component: {fileID: 1471468657895400114}
   - component: {fileID: 1737504754796051866}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MirrorReflection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 7435147201078805959}
   - component: {fileID: 1435462096616274359}
   - component: {fileID: 8498308933134305654}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 2328086627405917166}
   - component: {fileID: 2457844443033023780}
   - component: {fileID: 8359316760786060728}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SquareMirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ MonoBehaviour:
   FarClipPlane: 1000
   ReflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1847
   AddFlareLayer: 0
   NormalIsForward: 1
   AspectRatio: 1.5
@@ -571,8 +571,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3143109, y: 1, z: 0.5284145}
+  m_Center: {x: -0.023799011, y: 0, z: 0.0054197824}
 --- !u!114 &8359316760786060728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 7564872954673062135}
   - component: {fileID: 6036215479128494240}
   - component: {fileID: 826509426508282033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MirrorCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,3 +687,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MirrorObject: {fileID: 3906558312316754528}
   VRMode: 0
+  mirrorMaterialCopy: {fileID: 2100000, guid: 232c0653700ee46418c8a4a6f0402d92, type: 2}

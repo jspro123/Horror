@@ -93,11 +93,13 @@ public class Assign : MonoBehaviour {
             string color = props[i].color;
             string shape = props[i].shape;
             string number = props[i].number;
-            var position = positions[i].transform.position;
+            Transform t = positions[i].transform;
             GameObject newMirror = CreateMirror(circleMirror, square, diamond, shape);
             newMirror.transform.SetParent(mirrorParent.transform);
             ChangeColor(newMirror, color);
-            newMirror.transform.position = position;
+            newMirror.transform.position = t.position;
+            newMirror.transform.rotation = t.rotation;
+            newMirror.transform.localScale = t.localScale;
             GameObject textComp = newMirror.transform.GetChild(4).gameObject;
             TMPro.TextMeshPro textMesh = textComp.GetComponent<TMPro.TextMeshPro>();
             textMesh.text = number;
