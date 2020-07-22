@@ -1,7 +1,15 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+[Serializable]
+public class MirrorPositionInfo
+{
+    public GameObject mirrorPos;
+    public LayerMask reflectLayers;
+}
+
 
 public class MirrorProperties {
     public string color;
@@ -37,7 +45,7 @@ public class Assign : MonoBehaviour {
         int n = ls.Count;
         while (n > 1) {
             n--;
-            int i = Random.Range(0,n+1);
+            int i = UnityEngine.Random.Range(0,n+1);
             var temp = ls[i];
             ls[i] = ls[n];
             ls[n] = temp;
@@ -72,10 +80,9 @@ public class Assign : MonoBehaviour {
     }
 
     public void AssignClues(MirrorProperties goalSpec, List<GameObject> cluePool1, List<GameObject> cluePool2, List<GameObject> cluePool3, GameObject clue) {
-        Random random = new Random();
-        GameObject randomCluePoint1 = cluePool1[Random.Range(0,cluePool1.Count)];
-        GameObject randomCluePoint2 = cluePool2[Random.Range(0,cluePool2.Count)];
-        GameObject randomCluePoint3 = cluePool3[Random.Range(0,cluePool3.Count)];
+        GameObject randomCluePoint1 = cluePool1[UnityEngine.Random.Range(0,cluePool1.Count)];
+        GameObject randomCluePoint2 = cluePool2[UnityEngine.Random.Range(0,cluePool2.Count)];
+        GameObject randomCluePoint3 = cluePool3[UnityEngine.Random.Range(0,cluePool3.Count)];
         List<GameObject> cluepoints = new List<GameObject>{randomCluePoint1, randomCluePoint2, randomCluePoint3};
         List<string> mp = new List<string>{goalSpec.color, goalSpec.shape, goalSpec.number};
         Shuffle(cluepoints);
@@ -88,18 +95,35 @@ public class Assign : MonoBehaviour {
         }
     }
 
-    public void AssignMirrors(int goalMirror, List<GameObject> positions, GameObject circle, GameObject square, GameObject diamond, List<MirrorProperties> props) {
-        for(int i = 0; i < positions.Count; i++) { 
+    private void PrepareNewMirror(GameObject newMirror, MirrorPositionInfo positionInfo)
+    {
+        Transform t = positionInfo.mirrorPos.transform;
+        newMirror.transform.SetParent(mirrorParent.transform);
+
+        newMirror.transform.position = t.position;
+        newMirror.transform.rotation = t.rotation;
+        newMirror.transform.localScale = t.localScale;
+        newMirror.tag = positionInfo.mirrorPos.tag;
+
+        for(int i = 0; i < newMirror.transform.childCount; i++)
+        {
+            newMirror.transform.GetChild(i).gameObject.tag = positionInfo.mirrorPos.tag;
+        }
+
+        MirrorScript mirrorScript = newMirror.GetComponent<MirrorScript>();
+        mirrorScript.ReflectLayers = positionInfo.reflectLayers;
+    }
+
+    public void AssignMirrors(int goalMirror, List<MirrorPositionInfo> mirrors, GameObject circle, GameObject square, GameObject diamond, List<MirrorProperties> props) {
+        for(int i = 0; i < mirrors.Count; i++) { 
             string color = props[i].color;
             string shape = props[i].shape;
             string number = props[i].number;
-            Transform t = positions[i].transform;
+            
             GameObject newMirror = CreateMirror(circleMirror, square, diamond, shape);
-            newMirror.transform.SetParent(mirrorParent.transform);
+            PrepareNewMirror(newMirror, mirrors[i]);
             ChangeColor(newMirror, color);
-            newMirror.transform.position = t.position;
-            newMirror.transform.rotation = t.rotation;
-            newMirror.transform.localScale = t.localScale;
+
             GameObject textComp = newMirror.transform.GetChild(4).gameObject;
             TMPro.TextMeshPro textMesh = textComp.GetComponent<TMPro.TextMeshPro>();
             textMesh.text = number;
@@ -122,7 +146,7 @@ public class Assign : MonoBehaviour {
     public GameObject clueParent; 
 
     [Header("Position of mirrors/clues")]
-    public List<GameObject> mirrorPositions;
+    public List<MirrorPositionInfo> mirrorPositions;
     public List<GameObject> cluePool1;
     public List<GameObject> cluePool2;
     public List<GameObject> cluePool3;
@@ -139,7 +163,7 @@ public class Assign : MonoBehaviour {
             return;
         }
         Shuffle(CP);
-        int goalMirror = Random.Range(0,mpCount);
+        int goalMirror = UnityEngine.Random.Range(0,mpCount);
         var goalSpec = CP[goalMirror];
         AssignMirrors(goalMirror, mirrorPositions, circleMirror, squareMirror, diamondMirror, CP);
         AssignClues(goalSpec, cluePool1, cluePool2, cluePool3, clue);

@@ -7,6 +7,27 @@ TagManager:
   - Left
   - Right
   - Current
+  - EntranceHall
+  - BallroomOne
+  - BallroomTwo
+  - BedroomHallwayOne
+  - BedroomHallwayTwo
+  - BedroomOne
+  - BedroomTwo
+  - PoolroomOne
+  - PoolroomTwo
+  - BathroomOne
+  - BathroomTwo
+  - BedroomThree
+  - BedroomFour
+  - HallwayOne
+  - HallwayTwo
+  - Study
+  - Fireplace
+  - HallwayThree
+  - Library
+  - Kitchen
+  - DiningRoom
   layers:
   - Default
   - TransparentFX
@@ -17,29 +38,29 @@ TagManager:
   - 
   - 
   - Monster
-  - Wall
+  - EntranceHall
   - Player
   - Mirror
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - BallRoom
+  - BillardsRoom
+  - PeasantBedroomOne
+  - PeasantBedroomTwo
+  - BillardsBathroom
+  - StudyHallway
+  - StudyBedroom
+  - SpecialRoom
+  - Study
+  - MazeLibrary
+  - Fireplace
+  - FireplaceHallway
+  - CarpetLibrary
+  - MasterBedroom
+  - MasterBathroom
+  - MasterHallway
+  - Kitchen
+  - DiningRoom
+  - WeirdRoom
+  - PeasantHallway
   m_SortingLayers:
   - name: Default
     uniqueID: 0

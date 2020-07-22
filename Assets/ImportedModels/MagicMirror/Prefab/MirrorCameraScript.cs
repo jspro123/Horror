@@ -5,8 +5,6 @@ using UnityEngine.VR;
 
 public class MirrorCameraScript : MonoBehaviour
 {
-
-
     public GameObject MirrorObject;
 	public bool VRMode;
 
@@ -34,10 +32,7 @@ public class MirrorCameraScript : MonoBehaviour
             cameraObject.gameObject.AddComponent<FlareLayer>();
         }
 
-        mirrorMaterial = new Material(mirrorMaterialCopy);
-        MirrorObject.GetComponent<MeshRenderer>().material = mirrorMaterial;
         mirrorRenderer = MirrorObject.GetComponent<Renderer>();
-        mirrorRenderer.material = mirrorMaterial;
 
         if (Application.isPlaying)
         {
@@ -45,12 +40,13 @@ public class MirrorCameraScript : MonoBehaviour
             {
                 if (m.name == "MirrorMaterial")
                 {
-                    mirrorRenderer.sharedMaterial = m;
+                    mirrorRenderer.material = m;
                     break;
                 }
             }
         }
 
+        mirrorMaterial = mirrorRenderer.material;
         CreateRenderTexture();
     }
 

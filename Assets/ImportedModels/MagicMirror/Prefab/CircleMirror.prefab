@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7fc7cdbba2b4489915a8923a46f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaximumPerPixelLights: 2
+  MaximumPerPixelLights: 1
   TextureSize: 768
   ClipPlaneOffset: 0.07
   FarClipPlane: 1000
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a68502eb355794680af8e3cae39702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirrorFrame: {fileID: 5391717906548227895}
 --- !u!23 &5391717906546336201
 MeshRenderer:
   m_ObjectHideFlags: 0
