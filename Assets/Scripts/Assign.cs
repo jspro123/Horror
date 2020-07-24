@@ -22,10 +22,6 @@ public class MirrorProperties {
     }
 }
 
-public class ExtraFields : MonoBehaviour {
-    public bool goal;
-}
-
 public class Assign : MonoBehaviour {
     public List<MirrorProperties> CartesianProduct(string[] colors, string[] shapes, string[] numbers) {
         var configs = new List<MirrorProperties>();
@@ -116,12 +112,12 @@ public class Assign : MonoBehaviour {
         mirrorScript.ReflectLayers = positionInfo.reflectLayers;
     }
 
-    public void AssignMirrors(int goalMirror, List<MirrorPositionInfo> mirrors, GameObject circle, GameObject square, GameObject diamond, List<MirrorProperties> props) {
+    public void AssignMirrors(int goalMirror, List<MirrorPositionInfo> mirrors, GameObject circle, GameObject square, GameObject diamond, List<MirrorProperties> props, GameObject player) {
         for(int i = 0; i < mirrors.Count; i++) { 
             string color = props[i].color;
             string shape = props[i].shape;
             string number = props[i].number;
-            
+
             GameObject newMirror = CreateMirror(circleMirror, square, diamond, shape);
             PrepareNewMirror(newMirror, mirrors[i]);
             ChangeColor(newMirror, color);
@@ -129,10 +125,13 @@ public class Assign : MonoBehaviour {
             GameObject textComp = newMirror.transform.GetChild(4).gameObject;
             TMPro.TextMeshPro textMesh = textComp.GetComponent<TMPro.TextMeshPro>();
             textMesh.text = number;
-            ExtraFields compExtra = newMirror.AddComponent(typeof(ExtraFields)) as ExtraFields;
-            compExtra.goal = false;
-            if (i ==  goalMirror) {
-                compExtra.goal = true;
+
+            GameObject collideArea = newMirror.transform.GetChild(5).gameObject;
+            Interact interactObject = collideArea.GetComponent<Interact>();
+            interactObject.player = player;
+            interactObject.goal = false;
+            if (i == goalMirror) {
+                interactObject.goal = true;
             }
         } 
     }
@@ -169,7 +168,7 @@ public class Assign : MonoBehaviour {
         Shuffle(CP);
         int goalMirror = UnityEngine.Random.Range(0,mpCount);
         var goalSpec = CP[goalMirror];
-        AssignMirrors(goalMirror, mirrorPositions, circleMirror, squareMirror, diamondMirror, CP);
+        AssignMirrors(goalMirror, mirrorPositions, circleMirror, squareMirror, diamondMirror, CP, player);
         AssignClues(goalSpec, cluePool1, cluePool2, cluePool3, clue, player);
     }
 }
