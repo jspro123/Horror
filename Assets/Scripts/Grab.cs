@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Grab : MonoBehaviour {
     Rigidbody body;
     bool held = false;
+    float minDistance = 2f;
     Vector3 temp;
     float distance;
     GameObject grabber;
@@ -13,7 +14,6 @@ public class Grab : MonoBehaviour {
 
     public GameObject player;
     public float throwForce = 600;
-    public float minDistance = 5f;
 
     void Start() {
         body = GetComponent<Rigidbody>();
@@ -28,7 +28,6 @@ public class Grab : MonoBehaviour {
             body.velocity = Vector3.zero;
             body.angularVelocity = Vector3.zero;
             this.transform.SetParent(grabber.transform);
-            this.transform.localPosition = new Vector3(0, 0, 0);
             var grabberAngles = grabber.transform.rotation.eulerAngles;
             this.transform.rotation = Quaternion.Euler(grabberAngles.x + 90, grabberAngles.y, grabberAngles.z);
             if (Input.GetMouseButtonDown(1)) {
