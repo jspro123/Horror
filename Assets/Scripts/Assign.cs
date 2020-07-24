@@ -79,7 +79,7 @@ public class Assign : MonoBehaviour {
         return newMirror;
     }
 
-    public void AssignClues(MirrorProperties goalSpec, List<GameObject> cluePool1, List<GameObject> cluePool2, List<GameObject> cluePool3, GameObject clue) {
+    public void AssignClues(MirrorProperties goalSpec, List<GameObject> cluePool1, List<GameObject> cluePool2, List<GameObject> cluePool3, GameObject clue, GameObject player) {
         GameObject randomCluePoint1 = cluePool1[UnityEngine.Random.Range(0,cluePool1.Count)];
         GameObject randomCluePoint2 = cluePool2[UnityEngine.Random.Range(0,cluePool2.Count)];
         GameObject randomCluePoint3 = cluePool3[UnityEngine.Random.Range(0,cluePool3.Count)];
@@ -89,7 +89,9 @@ public class Assign : MonoBehaviour {
         for(int i = 0; i < cluepoints.Count; i++) {
             GameObject newClue = Instantiate(clue);
             newClue.transform.SetParent(clueParent.transform);
-            newClue.transform.position = cluepoints[0].transform.position;
+            newClue.transform.position = cluepoints[i].transform.position;
+            Grab grabObject = newClue.GetComponent<Grab>();
+            grabObject.player = player;
             TMPro.TextMeshPro text = newClue.transform.Find("TEXT").GetComponent<TMPro.TextMeshPro>();
             text.text = mp[i];
         }
@@ -146,10 +148,12 @@ public class Assign : MonoBehaviour {
     public GameObject clueParent; 
 
     [Header("Position of mirrors/clues")]
+    public GameObject player;
     public List<MirrorPositionInfo> mirrorPositions;
     public List<GameObject> cluePool1;
     public List<GameObject> cluePool2;
     public List<GameObject> cluePool3;
+
 
     string[] colors = {"red","blue","green"};
     string[] shapes = {"square","diamond","circle"};
@@ -166,6 +170,6 @@ public class Assign : MonoBehaviour {
         int goalMirror = UnityEngine.Random.Range(0,mpCount);
         var goalSpec = CP[goalMirror];
         AssignMirrors(goalMirror, mirrorPositions, circleMirror, squareMirror, diamondMirror, CP);
-        AssignClues(goalSpec, cluePool1, cluePool2, cluePool3, clue);
+        AssignClues(goalSpec, cluePool1, cluePool2, cluePool3, clue, player);
     }
 }

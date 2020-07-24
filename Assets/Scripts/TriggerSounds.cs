@@ -10,7 +10,7 @@ public class TriggerSounds : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             int rand = Random.Range(0,100);
-            if (rand > threshold) {
+            if (rand < threshold) {
                 soundObject.GetComponent<AudioSource>().Play(0);
             }
         }
