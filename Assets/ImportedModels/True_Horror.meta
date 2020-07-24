@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 2ddf77b1f06ba40319811ae3ff5f57dc
+=======
+guid: c1fd884438f827e4baf82acadacf0370
+>>>>>>> parent of 54b689f... Merge pull request #30 from jspro123/revert-29-Zan&Malek
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
