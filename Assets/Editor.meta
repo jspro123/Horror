@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Editor.meta
 guid: fed6760e0cd294342afb7923906ad762
+=======
+guid: 435490590c0bfe64b8d64ac75266b589
+>>>>>>> Stashed changes:Assets/Scenes/CorridorMonster.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
