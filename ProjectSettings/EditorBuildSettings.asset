@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EventScene.unity
     guid: 01e10dde9189f44f693d60c082de2101
+  - enabled: 1
+    path: Assets/Scenes/CorridorMirror.unity
+    guid: 901764f383a96f04180380e8799f1d0a
   m_configObjects: {}
