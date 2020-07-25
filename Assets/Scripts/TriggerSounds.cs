@@ -8,7 +8,7 @@ public class TriggerSounds : MonoBehaviour
     public int threshold;
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
             int rand = Random.Range(0,100);
             if (rand < threshold) {
                 soundObject.GetComponent<AudioSource>().Play(0);
