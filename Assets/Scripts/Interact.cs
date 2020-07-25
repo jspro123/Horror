@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Interact : MonoBehaviour
@@ -29,10 +27,10 @@ public class Interact : MonoBehaviour
         if (inArea && Input.GetMouseButtonDown(0)) {
             if (goal) {
                 Debug.Log("YOU WIN");
-                // SceneManager.LoadScene("Corridor", LoadSceneMode.Additive);
+                SceneManager.LoadScene("WinScreen");
             } else {
                 Debug.Log("YOU LOSE");
-                // SceneManager.LoadScene("Corridor", LoadSceneMode.Additive);
+                SceneManager.LoadScene("CorridorMirror");
             }
         }
         

@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EventScene.unity
-    guid: 01e10dde9189f44f693d60c082de2101
+    path: Assets/Scenes/Horror.unity
+    guid: 0db1ded2979b69341ab6b39258ee522c
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 3135413014af80d4e8e8f55b24f5e933
   - enabled: 1
     path: Assets/Scenes/CorridorMirror.unity
     guid: 901764f383a96f04180380e8799f1d0a
+  - enabled: 1
+    path: Assets/Scenes/CorridorMonster.unity
+    guid: 5b0f2edca774a75458b54fb90c7e28cd
   m_configObjects: {}

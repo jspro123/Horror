@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterCatch : MonoBehaviour
 {
@@ -46,11 +45,11 @@ public class MonsterCatch : MonoBehaviour
             {
                 if (hit.transform.gameObject.layer == playerLayer)
                 {
-                    Debug.Log("Game over");
+                    SceneManager.LoadScene("CorridorMonster");
                 }
                 else
                 {
-                    Debug.Log("Obstacle in the way");
+                    //Obstacle in the way
                 }
             }
         }
